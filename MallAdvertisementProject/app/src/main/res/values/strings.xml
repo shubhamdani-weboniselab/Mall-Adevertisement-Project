@@ -4,5 +4,7 @@
     <string name="app_name">Mall Advertisement Project</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="your_location">Your Location</string>
+    <string name="mall">Mall</string>
 
 </resources>

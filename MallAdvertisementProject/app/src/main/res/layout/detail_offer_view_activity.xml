@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/toolbar" />
+
+
+        <TextView
+            android:id="@+id/tvDiscount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:text="Discount"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:layout_margin="10dp"
+
+            android:textSize="25dp" />
+
+        <ImageView
+            android:id="@+id/detailImage"
+            android:layout_below="@id/tvDiscount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/image_not_available"
+            android:layout_margin="5dp" />
+
+        <TextView
+            android:id="@+id/tvDetailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/detailImage"
+            android:layout_margin="5dp" />
+
+        <Button
+            android:id="@+id/btnNavigate"
+            android:layout_below="@+id/tvDetailText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="navigate" />
+
+    </RelativeLayout>
+</ScrollView>
