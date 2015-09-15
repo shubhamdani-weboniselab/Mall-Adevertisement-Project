@@ -66,8 +66,8 @@ public class GeoFenceTransitionService extends IntentService {
 
         if (geofenceTransition == Geofence.GEOFENCE_TRANSITION_ENTER) {
 
-            Intent serviceIntent = new Intent(this, BeaconListenerService.class);
-            startService(serviceIntent);
+//            Intent serviceIntent = new Intent(this, BeaconListenerService.class);
+//            startService(serviceIntent);
 
             jsonResponse = intent.getExtras().getString(Constants.JSON_RESPONSE);
             jsonDataParser = gson.fromJson(jsonResponse, JsonDataParser.class);

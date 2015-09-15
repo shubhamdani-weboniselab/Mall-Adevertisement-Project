@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -36,11 +37,7 @@ public class OffersListActivity extends AppCompatActivity {
         setToolBar();
         initialiseViews();
         setAdapter();
-        if(!isMyServiceRunning(GeoFenceMonitoringService.class)){
-            Intent intent = new Intent(this,GeoFenceMonitoringService.class);
-            intent.putExtra(Constants.JSON_RESPONSE,jsonResponse);
-            startService(intent);
-        }
+
     }
 
     private void initialiseViews() {
@@ -70,7 +67,6 @@ public class OffersListActivity extends AppCompatActivity {
         String[] DiscountArray = new String[arraySize];
         LatLng[] LatLngArray = new LatLng[arraySize];
 
-//
         for (int i = 0; i < jsonDataParser.getOffers().size(); i++) {
             urlArray[i] = jsonDataParser.getOffers().get(i).getUrl().trim();
             DescriptionArray[i] = jsonDataParser.getOffers().get(i).getDescription();
@@ -82,35 +78,4 @@ public class OffersListActivity extends AppCompatActivity {
 
     }
 
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
-        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
+  }
