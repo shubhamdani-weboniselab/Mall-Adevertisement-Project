@@ -1,7 +1,9 @@
 package com.webonise.malladvertisementproject;
 
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,6 +33,7 @@ public class SplashActivity extends Activity {
         JsonObjectRequest jsonObjectRequest = getJsonObjectRequest();
         Volley.newRequestQueue(this).add(jsonObjectRequest);
     }
+
     @Override
     protected void onPause() {
         super.onPause();
@@ -52,6 +55,14 @@ public class SplashActivity extends Activity {
         return new JsonObjectRequest(Constants.URL, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonObject) {
+
+
+                if (!isMyServiceRunning(GeoFenceMonitoringService.class)) {
+                    Intent intent = new Intent(getBaseContext(), GeoFenceMonitoringService.class);
+                    intent.putExtra(Constants.JSON_RESPONSE, Constants.tempJsonResponse);
+                    startService(intent);
+                }
+
                 //later put the jsonObject in intent
                 Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, Constants.tempJsonResponse);
                 startActivity(startMainScreen);
@@ -67,6 +78,17 @@ public class SplashActivity extends Activity {
                 finish();
             }
         });
+    }
+
+    private boolean isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.d("service is already running", "");
+                return true;
+            }
+        }
+        return false;
     }
 
 

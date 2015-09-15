@@ -59,7 +59,7 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_offer_view_activity);
         initializeView();
-        initializeBluetooth();
+//        initializeBluetooth();
         givenDataByPreviousActivity = getIntent().getExtras();
         populateView(givenDataByPreviousActivity);
     }
@@ -75,27 +75,6 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private void initializeView() {
         setToolBar();
@@ -172,7 +151,7 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
 
         mBluetoothAdapter = bluetoothManager.getAdapter();
-        mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
+//        mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
     }
 
 
@@ -187,6 +166,7 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
             openGoogleMapsForNavigation(getApplicationContext());
         }
     }
+
 }
 
 

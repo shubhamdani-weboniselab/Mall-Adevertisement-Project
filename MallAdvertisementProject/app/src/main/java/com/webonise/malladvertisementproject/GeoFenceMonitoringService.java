@@ -52,10 +52,9 @@ public class GeoFenceMonitoringService extends Service implements GoogleApiClien
         int result = super.onStartCommand(intent, flags, startId);
         buildGoogleApiClient();
         googleApiClient.connect();
-        jsonResponse = intent.getExtras().getString(Constants.JSON_RESPONSE);
+        jsonResponse = intent.getStringExtra(Constants.JSON_RESPONSE);
         if(jsonResponse!=null)
         populateGeoFenceList(jsonResponse);
-
         return result;
     }
 
