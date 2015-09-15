@@ -53,7 +53,7 @@ public class SplashActivity extends Activity {
             @Override
             public void onResponse(JSONObject jsonObject) {
                 //later put the jsonObject in intent
-                Intent startMainScreen = new Intent(SplashActivity.this, OffersList.class).putExtra(Constants.SERVER_DATA, Constants.tempJsonResponse);
+                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, Constants.tempJsonResponse);
                 startActivity(startMainScreen);
                 progressDialog.dismiss();
 

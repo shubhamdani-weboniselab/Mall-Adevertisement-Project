@@ -9,19 +9,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import adapters.RecycleViewAdapter;
-import utils.CoOdrinates;
 import utils.Constants;
 
 
-public class OffersList extends AppCompatActivity {
+public class OffersListActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
@@ -37,9 +36,9 @@ public class OffersList extends AppCompatActivity {
         setToolBar();
         initialiseViews();
         setAdapter();
-        if(!isMyServiceRunning(GeoFenceMoniteringService.class)){
-            Intent intent = new Intent(this,GeoFenceMoniteringService.class);
-            intent.putExtra("jsonResponse",jsonResponse);
+        if(!isMyServiceRunning(GeoFenceMonitoringService.class)){
+            Intent intent = new Intent(this,GeoFenceMonitoringService.class);
+            intent.putExtra(Constants.JSON_RESPONSE,jsonResponse);
             startService(intent);
         }
     }
@@ -49,7 +48,7 @@ public class OffersList extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        jsonResponse = getIntent().getExtras().getString(Constants.SERVER_DATA);
+        jsonResponse = getIntent().getExtras().getString(Constants.JSON_RESPONSE);
         builder = new GsonBuilder();
         gson = builder.create();
     }
@@ -69,16 +68,16 @@ public class OffersList extends AppCompatActivity {
         String[] urlArray = new String[arraySize];
         String[] DescriptionArray = new String[arraySize];
         String[] DiscountArray = new String[arraySize];
-        CoOdrinates[] coOrdinateArray = new CoOdrinates[arraySize];
+        LatLng[] LatLngArray = new LatLng[arraySize];
 
 //
         for (int i = 0; i < jsonDataParser.getOffers().size(); i++) {
             urlArray[i] = jsonDataParser.getOffers().get(i).getUrl().trim();
             DescriptionArray[i] = jsonDataParser.getOffers().get(i).getDescription();
             DiscountArray[i] = jsonDataParser.getOffers().get(i).getDiscountPercentage();
-            coOrdinateArray[i] = jsonDataParser.getOffers().get(i).getCoOrdinates();
+            LatLngArray[i] = jsonDataParser.getOffers().get(i).getLatLng();
         }
-        adapter = new RecycleViewAdapter(DiscountArray, urlArray, DescriptionArray, coOrdinateArray, this);
+        adapter = new RecycleViewAdapter(DiscountArray, urlArray, DescriptionArray, LatLngArray, this);
         recyclerView.setAdapter(adapter);
 
     }

@@ -6,5 +6,12 @@
     <string name="action_settings">Settings</string>
     <string name="your_location">Your Location</string>
     <string name="mall">Mall</string>
+    <string name="should_enable_location">"Location Should Be Enable "</string>
+    <string name="gps_requiered">GPS required.</string>
+    <string name="enable">Enable</string>
+    <string name="exit">Exit</string>
+    <string name="discount_text">10% Discount</string>
+    <string name="discount">Discount</string>
+    <string name="description">Description</string>
 
 </resources>

@@ -1,8 +1,9 @@
 package com.webonise.malladvertisementproject;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.List;
 
-import utils.CoOdrinates;
 
 /**
  * Created by webonise on 10/9/15.
@@ -26,6 +27,17 @@ public class JsonDataParser {
         private String latitude;
         private String discountPercentage;
         private String url;
+        private String id;
+
+        public String getId() {
+            return id;
+        }
+
+        public void setId(String id) {
+            this.id = id;
+        }
+
+
 
         public void setName(String name) {
             this.name = name;
@@ -75,9 +87,7 @@ public class JsonDataParser {
             return url;
         }
 
-        public CoOdrinates getCoOrdinates() {
-            return new CoOdrinates(Double.parseDouble(latitude), Double.parseDouble(longitude));
-        }
+        public LatLng getLatLng(){ return  new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude)); }
     }
 }
 

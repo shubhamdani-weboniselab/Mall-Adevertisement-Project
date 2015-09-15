@@ -1,20 +1,28 @@
 package com.webonise.malladvertisementproject;
 
-import android.app.Activity;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothManager;
+import android.bluetooth.le.BluetoothLeScanner;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -40,6 +48,10 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
     private double userLatitude;
     private double destinationLongitude;
     private double destinationLatitude;
+    private Bundle givenDataByPreviousActivity;
+    private BluetoothAdapter mBluetoothAdapter;
+    private BluetoothLeScanner mBluetoothLeScanner;
+    private BluetoothManager bluetoothManager;
 
 
     @Override
@@ -47,9 +59,20 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_offer_view_activity);
         initializeView();
-        Bundle givenDataByPreviousActivity = getIntent().getExtras();
+        initializeBluetooth();
+        givenDataByPreviousActivity = getIntent().getExtras();
         populateView(givenDataByPreviousActivity);
+    }
 
+    private boolean checkLocationEnable() {
+        if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            Log.d("provider", "enable");
+
+            return true;
+        } else {
+//            enableLocation();
+            return false;
+        }
     }
 
     @Override
@@ -81,6 +104,8 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         tvDiscount = (TextView) findViewById(R.id.tvDiscount);
         btnNavigation = (Button) findViewById(R.id.btnNavigate);
         btnNavigation.setOnClickListener(this);
+
+        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
     }
 
     private void setToolBar() {
@@ -98,15 +123,16 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
 
         destinationLatitude = givenDataByPreviousActivity.getDouble(Constants.LATITUDE);
         destinationLongitude = givenDataByPreviousActivity.getDouble(Constants.LONGITUDE);
-        Picasso.with(this).load(givenDataByPreviousActivity.getString("url")).into(imageView);
+        Picasso.with(this).load(givenDataByPreviousActivity.getString(Constants.DETAIL_URL)).into(imageView);
     }
 
     public void openGoogleMapsForNavigation(Context context) {
 
-        manager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+
         isGpsEnable = manager.isProviderEnabled(LocationManager.GPS_PROVIDER);
         isNetworkEnable = manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         if (!isGpsEnable && !isNetworkEnable) {
+//            enableLocation();
         } else {
             if (isNetworkEnable) {
                 if (manager != null) {
@@ -142,9 +168,24 @@ public class DetailOfferViewActivity extends AppCompatActivity implements View.O
         context.startActivity(intent);
     }
 
+    private void initializeBluetooth() {
+        bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+
+        mBluetoothAdapter = bluetoothManager.getAdapter();
+        mBluetoothLeScanner = mBluetoothAdapter.getBluetoothLeScanner();
+    }
+
+
     @Override
     public void onClick(View view) {
-        openGoogleMapsForNavigation(getApplicationContext());
+
+        if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
+            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+            startActivityForResult(enableBtIntent, Constants.REQUEST_ENABLE_BT);
+//            openGoogleMapsForNavigation(getApplicationContext());
+        } else {
+            openGoogleMapsForNavigation(getApplicationContext());
+        }
     }
 }
 
