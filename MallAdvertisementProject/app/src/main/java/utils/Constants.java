@@ -11,8 +11,9 @@ package utils;
  * 18.543866, 73.851686
  */
 public class Constants {
-    public static final String URL = "http://api.androidhive.info/contacts/";
 
+    public static final String URL = "http://test-geofence.weboapps.com/events.json";
+    public static final String BASE_URL = "http://test-geofence.weboapps.com";
     public static final String DETAIL_URL = "DETAIL_URL";
     public static final String DESCRIPTION = "DESCRIPTION";
     public static final String DISCOUNT = "DISCOUNT";

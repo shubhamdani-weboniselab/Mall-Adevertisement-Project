@@ -1,17 +1,12 @@
 package com.webonise.malladvertisementproject;
 
 
-import android.app.ActivityManager;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.gson.Gson;
@@ -30,10 +25,11 @@ public class OffersListActivity extends AppCompatActivity {
     private GsonBuilder builder;
     private Gson gson;
 
+    private TextView title;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.offer_list_activity);
         setToolBar();
         initialiseViews();
         setAdapter();
@@ -43,6 +39,7 @@ public class OffersListActivity extends AppCompatActivity {
     private void initialiseViews() {
         recyclerView = (RecyclerView) findViewById(R.id.recycleView);
         recyclerView.setHasFixedSize(true);
+        title = (TextView) findViewById(R.id.title);
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         jsonResponse = getIntent().getExtras().getString(Constants.JSON_RESPONSE);
@@ -54,13 +51,14 @@ public class OffersListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setTitle(getTitle());
+        toolbar.setTitle(null);
+        title.setText(getTitle());
 
     }
 
     private void setAdapter() {
-        JsonDataParser jsonDataParser = new JsonDataParser();
-        jsonDataParser = gson.fromJson(jsonResponse, JsonDataParser.class);
+       JsonDataParser jsonDataParser= new JsonDataParser();
+        jsonDataParser = gson.fromJson(jsonResponse,JsonDataParser.class);
         final int arraySize = jsonDataParser.getOffers().size();
         String[] urlArray = new String[arraySize];
         String[] DescriptionArray = new String[arraySize];

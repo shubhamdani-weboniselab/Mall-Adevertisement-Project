@@ -59,12 +59,12 @@ public class SplashActivity extends Activity {
 
                 if (!isMyServiceRunning(GeoFenceMonitoringService.class)) {
                     Intent intent = new Intent(getBaseContext(), GeoFenceMonitoringService.class);
-                    intent.putExtra(Constants.JSON_RESPONSE, Constants.tempJsonResponse);
-                    startService(intent);
+                    intent.putExtra(Constants.JSON_RESPONSE, jsonObject.toString());
+//                    startService(intent);
                 }
 
                 //later put the jsonObject in intent
-                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, Constants.tempJsonResponse);
+                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, jsonObject.toString());
                 startActivity(startMainScreen);
                 progressDialog.dismiss();
 
