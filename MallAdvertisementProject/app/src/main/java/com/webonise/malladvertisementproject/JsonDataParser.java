@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class JsonDataParser {
     private List<OffersEntity> offers;
+    private String[] urls;
 
     public void setOffers(List<OffersEntity> offers) {
         this.offers = offers;
@@ -17,6 +18,14 @@ public class JsonDataParser {
 
     public List<OffersEntity> getOffers() {
         return offers;
+    }
+
+    public String[] getUrls() {
+        urls = new String[offers.size()];
+        for (int i = 0; i < offers.size(); i++) {
+        urls[i] = offers.get(i).getUrl();
+        }
+        return urls;
     }
 
     public static class OffersEntity {
@@ -36,7 +45,6 @@ public class JsonDataParser {
         public void setId(String id) {
             this.id = id;
         }
-
 
 
         public void setName(String name) {
@@ -87,7 +95,9 @@ public class JsonDataParser {
             return url;
         }
 
-        public LatLng getLatLng(){ return  new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude)); }
+        public LatLng getLatLng() {
+            return new LatLng(Double.parseDouble(latitude), Double.parseDouble(longitude));
+        }
     }
 }
 

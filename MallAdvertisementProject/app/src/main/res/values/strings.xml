@@ -13,5 +13,6 @@
     <string name="discount_text">10% Discount</string>
     <string name="discount">Discount</string>
     <string name="description">Description</string>
+    <string name="internet_connectivity">Check Internet Connectivity</string>
 
 </resources>

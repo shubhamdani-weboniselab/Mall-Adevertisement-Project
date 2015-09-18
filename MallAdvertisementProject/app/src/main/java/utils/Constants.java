@@ -12,7 +12,8 @@ package utils;
  */
 public class Constants {
 
-    public static final String URL = "http://test-geofence.weboapps.com/events.json";
+//    public static final String URL = "http://test-geofence.weboapps.com/events.json";
+    public static final String URL = "http://api.androidhive.info/contacts";
     public static final String BASE_URL = "http://test-geofence.weboapps.com";
     public static final String DETAIL_URL = "DETAIL_URL";
     public static final String DESCRIPTION = "DESCRIPTION";
@@ -25,7 +26,7 @@ public class Constants {
     public static final int REQUEST_ENABLE_BT = 1;
 
 
-    public static final String tempJsonResponse = "{\n" +
+    public static final String TEMP_JSON_RESPONSE = "{\n" +
             "\n" +
             "\"offers\": [\n" +
             "\n" +
@@ -96,7 +97,7 @@ public class Constants {
             "\n" +
             "},{\t\"name\":\"android4\",\n" +
             "\t\"id\": \"8\",\n" +
-            "\t\"url\": \"http://en.docsity.com/wordpress/wp-content/uploads/sites/2/2014/04/Android-SDK.png\",\n" +
+            "\t\"url\": \"http://img5a.flixcart.com/image/ball/h/m/y/fb-221-nivia-football-revolvo-200x200-imadznjzcxefhpjr.jpeg\",\n" +
             "\t\"discountPercentage\": \"100% discount\",\n" +
             "\t\"description\": \"this discount is only available for some time... and only for the lower class people but not for the rich people who belongs to the Reservation category\",\t\"latitude\":\"19.562622\",\n" +
             "\t\"longitude\":\"72.808723\"\n" +
@@ -113,7 +114,7 @@ public class Constants {
             "\n" +
             "},{\t\"name\":\"android5\",\n" +
             "\t\"id\": \"10\",\n" +
-            "\t\"url\": \"http://en.docsity.com/wordpress/wp-content/uploads/sites/2/2014/04/Android-SDK.png\",\n" +
+            "\t\"url\": \"http://img5a.flixcart.com/image/ball/h/m/y/fb-221-nivia-football-revolvo-200x200-imadznjzcxefhpjr.jpeg\",\n" +
             "\t\"discountPercentage\": \"100% discount\",\n" +
             "\t\"description\": \"this discount is only available for some time... and only for the lower class people but not for the rich people who belongs to the Reservation category\",\t\"latitude\":\"19.562622\",\n" +
             "\t\"longitude\":\"72.808723\"\n" +

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp">
+
+    <ImageView
+        android:id="@+id/sliding_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/image_not_available"
+        android:scaleType="centerCrop"
+        android:layout_margin="5dp"
+        />
+    <TextView
+        android:id="@+id/tvVpDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10% Discount"
+        android:layout_margin="5dp"
+        />
+</RelativeLayout>

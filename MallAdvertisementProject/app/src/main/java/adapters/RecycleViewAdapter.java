@@ -69,7 +69,7 @@ public class RecycleViewAdapter extends RecyclerView.Adapter<RecycleViewAdapter.
 
             }
         });
-        Picasso.with(context).load(urls[position]).into(viewHolder.productImage);
+        Picasso.with(context).load(urls[position]).noFade().into(viewHolder.productImage);
     }
 
     private void startActivity(int position, ViewHolder viewHolder) {

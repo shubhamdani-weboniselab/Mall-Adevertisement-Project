@@ -64,7 +64,7 @@ public class SplashActivity extends Activity {
                 }
 
                 //later put the jsonObject in intent
-                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, jsonObject.toString());
+                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, Constants.TEMP_JSON_RESPONSE);
                 startActivity(startMainScreen);
                 progressDialog.dismiss();
 
@@ -73,9 +73,9 @@ public class SplashActivity extends Activity {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 Log.e("VOLLEY ERROR", "");
-                Toast.makeText(getBaseContext(), "Check Internet Connectivity", Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(), getString(R.string.internet_connectivity), Toast.LENGTH_LONG).show();
                 progressDialog.dismiss();
-                finish();
+//                finish();
             }
         });
     }
