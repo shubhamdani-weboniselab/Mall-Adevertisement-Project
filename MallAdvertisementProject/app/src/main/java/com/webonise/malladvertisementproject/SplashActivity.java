@@ -64,7 +64,7 @@ public class SplashActivity extends Activity {
                 }
 
                 //later put the jsonObject in intent
-                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, Constants.TEMP_JSON_RESPONSE);
+                Intent startMainScreen = new Intent(SplashActivity.this, OffersListActivity.class).putExtra(Constants.JSON_RESPONSE, jsonObject.toString());
                 startActivity(startMainScreen);
                 progressDialog.dismiss();
 

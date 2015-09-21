@@ -12,22 +12,24 @@
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="125dp"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardUseCompatPadding="true"
+        card_view:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="10"
-            >
+            android:background="#1fca16ff">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="7">
 
-                <de.hdodenhof.circleimageview.CircleImageView
-                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/productImage"
                     android:layout_width="110dp"
                     android:layout_height="110dp"
@@ -35,6 +37,7 @@
                     android:layout_centerInParent="true"
                     android:scaleType="centerCrop"
                     android:src="@drawable/image_not_available"
+
                     />
             </RelativeLayout>
 
@@ -50,7 +53,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:padding="10dp"
-
                     android:textColor="#000000"
                     android:text="@string/discount_text"
                     android:textStyle="bold" />
@@ -65,10 +67,9 @@
                     android:text="description of the product description of the product description of the product"
                     android:ellipsize="marquee"
                     android:padding="2dp"
-                    android:background="#ffffff"
+
                     android:textColor="#000000"
-                    android:maxLines="2"
-                     />
+                    android:maxLines="2" />
 
             </RelativeLayout>
         </LinearLayout>

@@ -6,7 +6,9 @@
     android:layout_height="wrap_content"
     android:background="?attr/colorPrimary"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-    tools:showIn="@layout/activity_main">
+    tools:showIn="@layout/activity_main"
+
+    >
 
     <RelativeLayout
         android:id="@+id/toolbarContainer"
@@ -15,13 +17,14 @@
 
 
         <ImageView
-            android:id="@+id/toolbarRefresh"
-
+            android:id="@+id/imgToolbarRefresh"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@android:drawable/ic_popup_sync"
             android:layout_alignParentLeft="true"
-            android:layout_margin="5dp" />
+            android:layout_margin="5dp"
+            android:elevation="10dp"
+            />
 
         <ImageView
             android:id="@+id/toolbarSearch"

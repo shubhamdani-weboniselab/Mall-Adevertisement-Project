@@ -13,7 +13,8 @@ package utils;
 public class Constants {
 
 //    public static final String URL = "http://test-geofence.weboapps.com/events.json";
-    public static final String URL = "http://api.androidhive.info/contacts";
+//    public static final String URL = "http://api.androidhive.info/contacts";
+    public static final String URL = "http://test-geofence.weboapps.com/events.json";
     public static final String BASE_URL = "http://test-geofence.weboapps.com";
     public static final String DETAIL_URL = "DETAIL_URL";
     public static final String DESCRIPTION = "DESCRIPTION";
@@ -24,6 +25,21 @@ public class Constants {
     public static final String GOOGLE_URL = "http://maps.google.com/maps?saddr=%f,%f(%s)&daddr=%f,%f(%s)";
     public static final String EMPTY_STRING = "No description";
     public static final int REQUEST_ENABLE_BT = 1;
+
+    public static final String EXPIRATION_DATE="2015-09-09T06:25:53.000Z";
+    public static final String DATABASE_NAME="OfferDetailsDatabase";
+    public static final int DATABASE_VERSION =1;
+    public static final String OFFERS_TABLE="OffersTable";
+
+    public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_DISCOUNT = "name";
+    public static final String COLUMN_DESCRIPTION = "age";
+    public static final String COLUMN_URL = "weight";
+    public static final double COLUMN_LAT = 0.0;
+    public static final double COLUMN_LONG = 0.0;
+    public static final String COLUMN_EXPIRATION_DATE = "height";
+    public static final String COLUMN_PROVIDERS_NAME = "providersName";
+
 
 
     public static final String TEMP_JSON_RESPONSE = "{\n" +

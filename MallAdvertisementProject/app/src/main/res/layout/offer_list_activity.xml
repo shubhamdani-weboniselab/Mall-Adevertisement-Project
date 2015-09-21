@@ -7,39 +7,23 @@
 
     <include layout="@layout/toolbar" />
 
-    <TextView
-        android:id="@+id/welcomeUser"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabs"
         android:layout_below="@id/toolbar"
-        android:textSize="15dp"
-        android:text="Welcome "
-        android:layout_margin="10dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
 
     <android.support.v4.view.ViewPager
-        android:id="@+id/viewPager"
+        android:id="@+id/OfferViewPager"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_below="@id/welcomeUser"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabs"
         android:layout_margin="10dp">
 
     </android.support.v4.view.ViewPager>
 
-    <TextView
-        android:id="@+id/discountAndOffers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/viewPager"
-        android:textSize="20dp"
-        android:textColor="#000000"
-        android:text="Discount &amp; Offers"
-        android:layout_margin="5dp" />
-
-    <android.support.v7.widget.RecyclerView
-        android:layout_below="@id/discountAndOffers"
-        android:id="@+id/recycleView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="vertical" />
 
 </RelativeLayout>
